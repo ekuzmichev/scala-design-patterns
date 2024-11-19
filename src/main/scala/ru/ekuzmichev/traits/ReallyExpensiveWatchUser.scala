@@ -9,7 +9,7 @@ object ReallyExpensiveWatchUser {
     //    superclass Watch is not a subclass of
     //    the superclass Connector of the mixin trait ConnectorWithHelper
     //
-    // All the classes that use ConnectorWithHelper trait for composition must be subclasses of Connector
+    // All the classes that use ConnectorWithHelper trait for composition must be subclasses of Connector (it is abstract class)
     //
     // If we want to fix the compilation issue in the example, we will have to modify the original Watch class
     // and make sure it is a subclass of Connector.
