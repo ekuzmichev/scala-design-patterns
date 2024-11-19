@@ -1,0 +1,12 @@
+Use classes:
+
+When a behavior is not going to be reused at all or in multiple places
+When you plan to use your Scala code from another language, for example,
+    if you are building a library that could be used in Java
+
+Use traits:
+
+When a behavior is going to be reused in multiple unrelated classes.
+When you want to define interfaces and want to use them outside Scala,
+    for example, Java. The reason is that the traits that do not have
+    any implementations are compiled similar to interfaces.

@@ -20,7 +20,7 @@ object Clashing extends A with B {
 }
  */
 
-object Clashing extends A with B {
+object Clashing extends AA with BB {
   def main(args: Array[String]): Unit = {
     System.out.println(hello())
   }

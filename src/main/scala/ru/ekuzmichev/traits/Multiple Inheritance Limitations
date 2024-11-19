@@ -1,0 +1,9 @@
+- Multiple inheritance in Scala is achieved using traits and it follows the rules of linearization.
+- In the inheritance hierarchy, if there is a trait that explicitly extends a class,
+    the class that mixes in this trait must also be a subclass of the trait parent.
+    This means that when mixing in traits that extend classes, they must all have the same parent.
+- It is not possible to mix traits in, which define or declare methods with the same signatures,
+    but different return types.
+- Special care has to be taken when multiple traits define methods with the same signatures and return types.
+    In cases where the methods are declared and expected to be implemented, this is not an issue
+    and only one implementation is enough.
