@@ -14,6 +14,7 @@ object ReallyExpensiveWatchUser {
     // If we want to fix the compilation issue in the example, we will have to modify the original Watch class
     // and make sure it is a subclass of Connector.
     // This, however, might not be desired and some refactoring might be needed in such cases.
+   /*
     val reallyExpensiveWatch = new Watch("really expensive brand", 1000L) with ConnectorWithHelper {
       override def connect(): Unit = {
         System.out.println("Connected with another connector.")
@@ -27,5 +28,6 @@ object ReallyExpensiveWatchUser {
     reallyExpensiveWatch.findDriver()
     reallyExpensiveWatch.connect()
     reallyExpensiveWatch.close()
+    */
   }
 }
