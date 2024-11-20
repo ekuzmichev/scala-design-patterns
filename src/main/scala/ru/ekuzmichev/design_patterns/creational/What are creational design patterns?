@@ -1,0 +1,10 @@
+Creational design patterns, as the name suggests, deal with object creation.
+In some cases, creating objects in a program could involve some extra complexities,
+and creational design patterns hide these complexities in order to make the use
+of software components easier. The object creation complexity could be caused by any of the following:
+
+- The number of initialization parameters
+- Required validation
+- The complexity of acquiring the required parameters
+- The preceding list could possibly be expanded even more and in many cases,
+    these factors are present not just individually, but in combinations.
