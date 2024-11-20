@@ -60,3 +60,10 @@ object Example {
     clientPgSql.executeQuery("SELECT * FROM employees")
   }
 }
+
+// Some Scala alternatives:
+//
+//- Passing the needed components to the class that needs them in the constructor (object composition).
+//  This, however, would mean that these components will be specific instances rather than new ones,
+//  every time a request for them is made.
+//- Passing a function that will create the objects we need.
