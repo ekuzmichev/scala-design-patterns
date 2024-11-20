@@ -43,7 +43,7 @@ trait UserService extends UserDB {
 
 // Solution: Self-types
 
-{
+object self_types {
   trait UserDB {
     this: DB =>
 
