@@ -60,3 +60,8 @@ object AbstractFactoryExample {
     clientPgSql.executeQuery("SELECT * FROM employees")
   }
 }
+
+// What it is not so good for?
+//
+// It could be problematic if the objects and methods we are using (SimpleConnection, in our case) change signatures.
+// In some cases, this pattern could also complicate our code unnecessarily and make it unreadable and hard to follow.
