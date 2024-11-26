@@ -7,4 +7,7 @@ lazy val root = (project in file("."))
     name := "scala-design-patterns"
   )
 
-libraryDependencies += "commons-codec" % "commons-codec" % "1.17.1"
+libraryDependencies ++= Seq(
+  "commons-codec" % "commons-codec" % "1.17.1",
+  "org.json4s" %% "json4s-jackson" % "4.0.7"
+)
