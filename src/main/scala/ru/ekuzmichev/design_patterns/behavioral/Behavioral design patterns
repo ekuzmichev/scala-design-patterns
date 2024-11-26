@@ -17,3 +17,10 @@ Patterns:
 - Command
 - Chain of responsibility
 - Interpreter
+- Iterator
+- Mediator
+- Memento
+- Observer
+- State
+- Template method
+- Visitor
