@@ -1,0 +1,19 @@
+Behavioral design patterns, as the name suggests, are to do with behavior.
+Their purpose is to identify and implement common communication patterns between objects in an application.
+They define object interaction in such a way that the communication between objects is easy and coupling
+is still kept at a low level.
+
+Behavioral design patterns describe how objects and classes interact with each other using messages.
+Contrary to creational and structural design patterns, the behavioral design patterns describe a flow or a process.
+This means that a developer should be really familiar with the actual process they are trying to implement.
+As with every other type of design pattern, behavioral design patterns exist in order to increase the testability,
+maintainability, and flexibility of the produced code.
+
+Patterns:
+
+- Value object
+- Null object
+- Strategy
+- Command
+- Chain of responsibility
+- Interpreter
