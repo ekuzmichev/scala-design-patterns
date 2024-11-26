@@ -9,6 +9,10 @@ import java.util.Base64
 // with a simpler interface in order to hide the usage complexities
 // and ease the client interaction.
 //
+// The facade design pattern is useful when we want to hide the
+// implementation details of many libraries, make an interface
+// much easier to use, and interact with complex systems.
+//
 object Facade {
   case class Person(name: String, age: Int)
 
