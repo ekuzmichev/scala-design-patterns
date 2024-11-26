@@ -12,6 +12,11 @@ import scala.io.Source
 // However, in some cases, we might need to push the request further
 // or even multiply it and broadcast to other receivers.
 //
+// The chain of responsibility design pattern should be used when we want
+// to decouple a sender of a request from the receivers and
+// have these receivers separated into their own entities.
+// It is good for creating pipelines and handling events.
+//
 object ChainOfResponsibility {
   // The same result could be obtained with 'abstract override def'-like stackable traits (as in Decorator pattern)
   object Classic {
