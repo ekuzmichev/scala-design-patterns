@@ -6,3 +6,5 @@ lazy val root = (project in file("."))
   .settings(
     name := "scala-design-patterns"
   )
+
+libraryDependencies += "commons-codec" % "commons-codec" % "1.17.1"
