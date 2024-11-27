@@ -1,3 +1,4 @@
+------------------------------------------------------------------------------------------------------------------------
 Monoids
 
 A monoid is a purely algebraic structure, which means that it is defined only by its algebra.
@@ -38,3 +39,17 @@ Monoids support composition; if A and B are monoids, then their product (A, B) i
 The purpose of monoids is to actually allow us to write generic and reusable code.
 With the help of monoids, we can focus on simple operations and then just compose
 them together rather than build concrete implementations for everything we want.
+
+------------------------------------------------------------------------------------------------------------------------
+Functors
+
+The map method for a functor of the F[T] type takes a function from T to Y as a parameter and returns a F[Y] as a result.
+
+Functors also obey some functor laws:
+
+- Identity: Whenever the identity function is mapped over some data, it doesn't change it, in other words,
+    map(x)(i => i) == x.
+- Composition: Multiple maps must compose together. It should make no difference if we do this operation:
+    map(map(x)(i => y(i)))(i => z(i)) or map(x)(i => z(y(i))).
+- The map function preserves the structure of the data, for example,
+    it does not add or remove elements, change their order, and so on. It just changes the representation.
