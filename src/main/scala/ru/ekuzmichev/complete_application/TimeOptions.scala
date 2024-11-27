@@ -9,32 +9,31 @@ case class TimeOptions(hours: Int, minutes: Int) {
   require(hours >= 0 && hours <= 23, "Hours must be between 0 and 23: " + hours)
   require(minutes >= 0 && minutes <= 59, "Minutes must be between 0 and 59: " + minutes)
 
-  def getInitialDelay(now: LocalDateTime, jobFrequency: JobFrequency): FiniteDuration = {
-    val actualFirstRun: LocalDateTime = calculateActualFirstRun(now, jobFrequency)
-    val numOfSecondsUntilRun          = now.until(actualFirstRun, ChronoUnit.SECONDS)
-    Duration.create(numOfSecondsUntilRun, TimeUnit.SECONDS)
-  }
-
-  private def calculateActualFirstRun(now: LocalDateTime, jobFrequency: JobFrequency): LocalDateTime = {
-    val firstRun: LocalDateTime = now.withHour(hours).withMinute(minutes)
-
-    val isBeforeNow: Boolean = firstRun.isBefore(now)
-
-    var tmpDateTime = firstRun
-
-    val dateTimeSeekShiftFn: LocalDateTime => LocalDateTime = jobFrequency match {
-      case JobFrequency.Daily  => _.plusDays(1)
-      case JobFrequency.Hourly => _.plusHours(1)
+  def getInitialDelay(now: LocalDateTime, frequency: JobFrequency): FiniteDuration = {
+    val firstRun = now.withHour(hours).withMinute(minutes)
+    val isBefore = firstRun.isBefore(now)
+    val actualFirstRun = frequency match {
+      case JobFrequency.Hourly =>
+        var tmp = firstRun
+        Iterator
+          .continually({ tmp = tmp.plusHours(1); tmp })
+          .takeWhile(d => d.isBefore(now))
+          .toList
+          .lastOption
+          .getOrElse(if (isBefore) firstRun else firstRun.minusHours(1))
+          .plusHours(1)
+      case JobFrequency.Daily =>
+        var tmp = firstRun
+        Iterator
+          .continually({ tmp = tmp.plusDays(1); tmp })
+          .takeWhile(d => d.isBefore(now))
+          .toList
+          .lastOption
+          .getOrElse(if (isBefore) firstRun else firstRun.minusDays(1))
+          .plusDays(1)
     }
-
-    Iterator
-      .continually({
-        tmpDateTime = dateTimeSeekShiftFn(tmpDateTime);
-        tmpDateTime
-      })
-      .takeWhile(localDateTime => localDateTime.isBefore(now))
-      .toList
-      .lastOption
-      .getOrElse(if (isBeforeNow) dateTimeSeekShiftFn(firstRun) else firstRun)
+    val secondsUntilRun = now.until(actualFirstRun, ChronoUnit.SECONDS)
+    Duration.create(secondsUntilRun, TimeUnit.SECONDS)
   }
+
 }
