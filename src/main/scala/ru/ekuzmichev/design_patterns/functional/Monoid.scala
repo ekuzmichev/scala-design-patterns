@@ -30,6 +30,17 @@ object Monoid {
       list.foldLeft(m.zero) { case (t, y) =>
         m.op(t, f(y))
       }
+
+    // IndexedSeq guarantees that getting elements by index will be efficient
+    def balancedFold[T, Y](list: IndexedSeq[T], m: Monoid[Y])(f: T => Y): Y =
+      if (list.isEmpty) {
+        m.zero
+      } else if (list.length == 1) {
+        f(list(0))
+      } else {
+        val (left, right) = list.splitAt(list.length / 2)
+        m.op(balancedFold(left, m)(f), balancedFold(right, m)(f))
+      }
   }
 }
 
@@ -58,5 +69,15 @@ object MonoidFoldingGenericExample {
     println(s"Right folded:\n${MonoidOperations.fold(strings, stringConcatenation)}")
     println(s"6! is: ${MonoidOperations.fold(numbers, intMultiplication)}")
     println(s"Fold-mapped:\n${MonoidOperations.foldMap(numbers, stringConcatenation)(n => s"$n#")}")
+  }
+}
+
+object MonoidBalancedFoldExample {
+  import Monoid._
+  import Monoid.Monoids._
+
+  def main(args: Array[String]): Unit = {
+    val numbers = Array(1, 2, 3, 4)
+    System.out.println(s"4! is: ${MonoidOperations.balancedFold(numbers, intMultiplication)(identity)}")
   }
 }

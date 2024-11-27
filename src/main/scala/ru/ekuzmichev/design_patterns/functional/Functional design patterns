@@ -19,3 +19,16 @@ Monoid laws:
     op(x, zero) == x and op(zero, x) == x.
 
 With the use of monoids, we can easily facilitate parallel computation and build complex calculations from small pieces.
+
+The fact that a monoid operation is associative means that if we have to chain multiple operations,
+we could probably do it in parallel.
+
+For example, if we have the numbers 1, 2, 3, and 4 and wanted to find 4!, we can do the following:
+
+op(op(op(1, 2), 3), 4)
+
+The associativity, however, would allow us to do the following:
+
+op(op(1, 2), op(3, 4))
+
+This is also called balanced fold
