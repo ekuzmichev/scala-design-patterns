@@ -1,0 +1,12 @@
+Patterns:
+
+- The lens design pattern
+- The cake design pattern
+- The pimp my library design pattern
+- The stackable traits design pattern
+- The type class design pattern
+- Lazy evaluation
+- Partial functions
+- Implicit injection
+- Duck typing
+- Memoization

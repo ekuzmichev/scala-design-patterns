@@ -10,5 +10,6 @@ lazy val root = (project in file("."))
 libraryDependencies ++= Seq(
   "commons-codec"         % "commons-codec"  % "1.17.1",
   "org.json4s"           %% "json4s-jackson" % "4.0.7",
-  "com.github.tototoshi" %% "scala-csv"      % "2.0.0"
+  "com.github.tototoshi" %% "scala-csv"      % "2.0.0",
+  "org.scalaz"           %% "scalaz-core"    % "7.3.8"
 )
