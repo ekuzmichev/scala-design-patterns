@@ -152,7 +152,7 @@ trait MigrationComponent {
         "INSERT INTO people(id, name, age) VALUES (?, ?, ?)"
       )
       try {
-        people.foreach { case person =>
+        people.foreach { person =>
           statement.setInt(1, person._1)
           statement.setString(2, person._2)
           statement.setInt(3, person._3)
@@ -169,7 +169,7 @@ trait MigrationComponent {
         "INSERT INTO classes(id, name) VALUES (?, ?)"
       )
       try {
-        classes.foreach { case cls =>
+        classes.foreach { cls =>
           statement.setInt(1, cls._1)
           statement.setString(2, cls._2)
           statement.addBatch()
