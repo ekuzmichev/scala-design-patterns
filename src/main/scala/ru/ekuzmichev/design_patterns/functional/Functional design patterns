@@ -32,3 +32,9 @@ The associativity, however, would allow us to do the following:
 op(op(1, 2), op(3, 4))
 
 This is also called balanced fold
+
+Monoids support composition; if A and B are monoids, then their product (A, B) is also a monoid.
+
+The purpose of monoids is to actually allow us to write generic and reusable code.
+With the help of monoids, we can focus on simple operations and then just compose
+them together rather than build concrete implementations for everything we want.
