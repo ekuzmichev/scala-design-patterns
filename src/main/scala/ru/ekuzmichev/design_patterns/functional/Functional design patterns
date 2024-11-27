@@ -53,3 +53,49 @@ Functors also obey some functor laws:
     map(map(x)(i => y(i)))(i => z(i)) or map(x)(i => z(y(i))).
 - The map function preserves the structure of the data, for example,
     it does not add or remove elements, change their order, and so on. It just changes the representation.
+
+------------------------------------------------------------------------------------------------------------------------
+Monads
+
+Monads are functors that have the unit and flatMap methods and follow the monad rules.
+
+Monad laws:
+
+- Identity law:
+    Doing map over the identity function doesn't change the data
+        map(x)(i => i) == x.
+    Flat mapping over the unit function also keeps the data the same
+        x.flatMap(i => unit(i)) == x.
+    The latter basically says that flatMap undoes unit.
+    Using the connection between map, flatMap, and unit we defined earlier,
+    we can derive one of these two rules from the other and vice versa.
+    The unit method can be thought of as the zero element in monoids.
+- The unit law:
+    From the definition of unit, we can also say this:
+        unit(x).flatMap { y => f(y) } == f(x).
+    From this, we will get
+        unit(x).map { y => f(x) } == unit(f(x)).
+    This gives us some interesting connections between all the methods.
+- Composition:
+    Multiple maps must be composed together.
+    It should make no difference if we do
+        x.map(i => y(i)).map(i => z(i)) or x.map(i => z(y(i))).
+    Moreover, multiple flatMap calls must also compose, making the following true:
+        x.flatMap(i => y(i)).flatMap(i => z(i)) == x.flatMap(i => y(i).flatMap(j => z(j))).
+
+Zero Monad laws:
+
+- Zero identity:
+    It says that no matter what function we apply to a zero monad,
+    it is still going to be
+        zero—zero.flatMap(i => f(i)) == zero and zero.map(i => f(i)) == zero.
+    Zero shouldn't be confused with unit, as they are different and the latter doesn't represent emptiness.
+- Reverse zero:
+    Basically, if we replace everything with zero,
+    our final result will also be zero
+        x.flatMap(i => zero) == zero.
+- Commutativity :
+    Monads can have a concept of addition, whether it is concatenation or something else.
+    In any case, this kind of operation when done with the zero monad will be commutative,
+    for example,
+        x plus zero == zero plus x == x.
