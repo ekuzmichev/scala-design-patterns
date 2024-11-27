@@ -1,0 +1,3 @@
+- Create a scheduler application that can run console commands or SQL queries against a database.
+- The user should be able to schedule any command or query using configuration files,
+    and they should be able to choose a granularity: hourly or daily, at a specific time.

@@ -1,0 +1,15 @@
+Core components:
+
+- The main application
+- The scheduler
+- The router
+- The workers
+
+We will need to do the following operations:
+
+- Read an application configuration // Typesafe config
+- Read scheduler configuration files // json4s
+- Schedule tasks // akka
+- Exchange messages // akka
+- Access a database // H2
+- Execute console commands // built-in functionalities of Scala
