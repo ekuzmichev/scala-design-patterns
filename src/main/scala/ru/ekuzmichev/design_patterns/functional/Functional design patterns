@@ -1,0 +1,21 @@
+Monoids
+
+A monoid is a purely algebraic structure, which means that it is defined only by its algebra.
+All monoids must conform to the so-called monoid laws.
+
+Algebraic: It is defined only by its algebra, for example, the operations it supports and the laws it conforms to.
+
+A monoid is a type with an associative binary operation over it, which also has an identity element.
+
+Monoid laws:
+
+- A monoid contains a T type.
+- A monoid contains one associative binary operation.
+    This means that for any x, y, and z of the T type, the following is true:
+    op(op(x, y), z) == op(x, op(y, z)).
+- A structure must have an identity element—zero.
+    This element is characterized by the fact that the previous operation
+    will always return the other element
+    op(x, zero) == x and op(zero, x) == x.
+
+With the use of monoids, we can easily facilitate parallel computation and build complex calculations from small pieces.
